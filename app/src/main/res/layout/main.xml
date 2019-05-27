@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+	<include
+		android:id="@+id/mainToolbar"
+		layout="@layout/custom_toolbar"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+	
+	<ScrollView
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:fillViewport="true"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
+		
+		<android.support.constraint.ConstraintLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/mainToolbar">
+			
+			<fragment
+				android:id="@+id/frag_list"
+				class="com.example.demowifidirect.DeviceListFragment"
+				android:layout_width="0dp"
+				android:layout_height="200dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginEnd="16dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="parent">
+				<!-- Preview: layout=@layout/row_devices -->
+			</fragment>
+			
+			<fragment
+				android:id="@+id/frag_detail"
+				class="com.example.demowifidirect.DeviceDetailFragment"
+				android:layout_width="0dp"
+				android:layout_height="0dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginTop="8dp"
+				android:layout_marginEnd="16dp"
+				android:layout_marginBottom="8dp"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/content">
+				<!-- Preview: layout=@layout/device_detail -->
+			</fragment>
+			
+			<com.skyfishjy.library.RippleBackground
+				android:id="@+id/content"
+				android:layout_width="0dp"
+				android:layout_height="200dp"
+				android:layout_marginStart="16dp"
+				android:layout_marginEnd="16dp"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/frag_list"
+				app:rb_color="#0099CC"
+				app:rb_duration="3000"
+				app:rb_radius="20dp"
+				app:rb_rippleAmount="4"
+				app:rb_scale="4">
+				
+				<ImageView
+					android:layout_width="100dp"
+					android:layout_height="100dp"
+					android:layout_centerInParent="true"
+					android:id="@+id/discover"
+					android:src="@drawable/ic_search"/>
+				
+				<ImageView
+					android:layout_width="32dp"
+					android:layout_height="32dp"
+					android:layout_centerInParent="true"
+					android:id="@+id/phone"
+					android:src="@drawable/ic_phone_white"
+					android:visibility="gone"/>
+			</com.skyfishjy.library.RippleBackground>
+		</android.support.constraint.ConstraintLayout>
+	
+	</ScrollView>
+	
+ 
+ 
+
+</android.support.constraint.ConstraintLayout>

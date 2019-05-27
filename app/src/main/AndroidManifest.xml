@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.example.demowifidirect">
+	
+	<!-- runtime permission check API is on Android 6.0 or higher -->
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	
+	<!-- Google Play filtering -->
+	<uses-feature android:name="android.hardware.wifi.direct" android:required="true"/>
+	
+	<application
+		android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".WiFiDirectActivity"
+			android:label="@string/app_name" android:launchMode="singleTask"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action
+					android:name="android.intent.action.MAIN" />
+				<action android:name="android.intent.action.VIEW"/>
+				<category
+					android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		
+		<provider
+			android:name="android.support.v4.content.FileProvider"
+			android:authorities="com.example.android.wifidirect.fileprovider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/provider_paths" />
+		</provider>
+		
+		<!-- Used for transferring files  after a successful connection -->
+		<service android:enabled="true" android:name=".FileTransferService" />
+	
+	</application>
+</manifest>
